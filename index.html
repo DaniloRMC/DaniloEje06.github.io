@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <style>
+        input {
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="tarea" placeholder="Nueva Tarea">
+    <button onclick="agregarTarea()">Agregar Tarea</button>
+    <ul id="lista-tareas"></ul>
+
+    <script>
+        function agregarTarea() {
+            const tarea = document.getElementById('tarea').value;
+            if (tarea === '') {
+                alert('Ingrese una tarea.');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.textContent = tarea;
+            li.onclick = function() {
+                this.remove();
+            };
+            document.getElementById('lista-tareas').appendChild(li);
+            document.getElementById('tarea').value = '';
+        }
+    </script>
+</body>
+</html>
